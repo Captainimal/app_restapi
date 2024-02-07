@@ -7,8 +7,11 @@ module.exports = function (app) {
         .get(jsonku.index);
 
     app.route('/show')
-        .get(jsonku.showingAllMahasiswa)
+        .get(jsonku.showingAllMahasiswa);
 
     app.route('/show/:id')
-        .get(jsonku.showingAllMahasiswaByID)
+        .get(jsonku.showingAllMahasiswaByID);
+
+    app.route('/add')
+        .post(jsonku.addingMahasiswa);
 }
