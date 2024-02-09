@@ -1,7 +1,7 @@
 'use strict';
 
-var response = require('./res');
-var connection = require('./connection');
+let response = require('./res');
+let connection = require('./connection');
 
 let port = 3000;
 exports.index = function (req, res) {
@@ -35,9 +35,9 @@ exports.showingAllMahasiswaByID = function (req, res) {
 
 // Adding mahasiswa data
 exports.addingMahasiswa = function (req, res) {
-    var nim = req.body.nim;
-    var nama = req.body.nama;
-    var jurusan = req.body.jurusan;
+    let nim = req.body.nim;
+    let nama = req.body.nama;
+    let jurusan = req.body.jurusan;
 
     connection.query('INSERT INTO `mahasiswa` (nim,nama,jurusan) VALUES (?,?,?)',
         [nim, nama, jurusan],
@@ -50,14 +50,14 @@ exports.addingMahasiswa = function (req, res) {
         });
 };
 
-// Mengubah data berdasarkan ID
+// Change data by ID
 exports.changeMahasiswa = function (req, res) {
-    var id = req.body.id_mahasiswa;
-    var nim = req.body.nim;
-    var nama = req.body.nama;
-    var jurusan = req.body.jurusan;
+    let id = req.body.id_mahasiswa;
+    let nim = req.body.nim;
+    let nama = req.body.nama;
+    let jurusan = req.body.jurusan;
 
-    connection.query('UPDATE `mahasiswa` SET nim=?, name=?, jurusan=?', [nim, nama, jurusan],
+    connection.query('UPDATE `mahasiswa` SET nim=?, nama=?, jurusan=? WHERE id_mahasiswa=?', [nim, nama, jurusan, id],
         function (error, rows, fields) {
             if (error) {
                 console.log(error);

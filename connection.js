@@ -16,7 +16,7 @@ conn.connect((err) => {
     console.log('\x1b[33mUser: \x1b[0m"' + conn.config.user + '"');
     console.log('\x1b[33mDatabase: \x1b[0m"' + conn.config.database + '" \n');
     console.log('Server running on \x1b[38;5;211m"http://localhost:' + port + '"\x1b[0m \n');
-    console.log('[To stop server press Ctrl + C] \n');
+    console.log('\x1b[38;5;240m[To stop server press Ctrl + C]\x1b[0m\n');
 });
 
 module.exports = conn;
