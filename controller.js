@@ -64,5 +64,19 @@ exports.changeMahasiswa = function (req, res) {
             } else {
                 response.ok("Data Edited Succesfully!", res)
             }
-        }); 
+        });
 }
+
+// Delete data by mahasiswa ID
+exports.deleteMahasiswa = function (req, res) {
+    let id = req.body.id_mahasiswa;
+    connection.query('DELETE FROM `mahasiswa` WHERE `id_mahasiswa` = ?', [id],
+        function (error, rows, fields) {
+            if (error) {
+                console.log(error);
+                res.status(500).json({ error: 'Internal Server Error' });
+            } else {
+                response.ok("Data Deleted Successfully!", res);
+            }
+        });
+};
