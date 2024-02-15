@@ -76,7 +76,21 @@ exports.deleteMahasiswa = function (req, res) {
                 console.log(error);
                 res.status(500).json({ error: 'Internal Server Error' });
             } else {
-                response.ok("Data Deleted Successfully!", res);
+                res.status(200).json({ message: 'Data Deleted Successfully!' });
             }
         });
 };
+
+// Showing matakuliah group
+exports.showGroupMatakuliah = function(req, res){
+    connection.query('SELECT mahasiswa.id_mahasiswa, mahasiswa.nim, mahasiswa.nama, mahasiswa.jurusan, matakuliah.matakuliah, matakuliah.sks FROM krs JOIN matakuliah JOIN mahasiswa WHERE krs.id_matakuliah = matakuliah.id_matakuliah AND krs.id_mahasiswa = mahasiswa.id_mahasiswa ORDER BY mahasiswa.id_mahasiswa;',
+        function (error, rows, fields){
+            if(error){
+                console.log(error);
+            } else {
+                response.oknested(rows, res);
+            }
+        }
+    )
+
+}
